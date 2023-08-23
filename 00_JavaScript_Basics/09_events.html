@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+// * this code is stored in a separate file for a quick and efficient read 
+    console.log('It worked');
+    //* not good practice to do it like this, use "addEventListener" instead of  "onclick"
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    //*  } 
+
+     // attachEvent()
+    // jQuery - onEventListener
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY, tagName
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log(e);
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     // e.stopPropagation()
+    // }, false)
+    // document.getElementById('river').addEventListener('click', function(e){
+    //     console.log("river is flowing");
+    //     // e.stopPropagation()
+    // }, false)
+
+    // document.getElementById('google').addEventListener('click', function(event){
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //         console.log('Google is clicked');
+    // }, false)
+
+
+      //* lets learn about 'event' variable in the callBackFunction in the addEventListener
+
+   /*  'event' parameter in the callBackFn is a variable that represents the event object
+
+   * It's commonly names as 'event', but we can choose any valid variable name.
+   * This 'event' refers to a different events, in our specific case, it is 'click' event.
+   * The event object in this case, will be an instance of the 'MouseEvent' object.
+   * MouseEvent is a specific type of an event object that refpresents a user action involving a mouse click. 
+   *  */
+
+// *   lets see what will event return if we log it to the console.
+// * I've attached an event listener to the element with id as 'images' (i.e. our <ul> element)
+// * so whenever we click on the list it will log the event object to the console 
+// * lets see the output
+   
+// document.querySelector('#images').addEventListener('click', function(event){
+//      console.log(event);
+// }, false)
+   //* output:=> PointerEvent {isTrusted: true, pointerId: 0, width: 1, height: 1, pressure: 0, …} 
+//* We got an object in the output named as 'PointerEvent'
+//* lets learn about this 'PointerEvent'
+//* => PointerEvents are DOM events 
+//* Learn your notes to learn more about them.
+    //removeIt.parentNode.removeChild(removeIt)
+
+
+
+    //ToDo: when we click on the image the li should be removed
+// lets do it
+
+document.querySelector('#images').addEventListener('click', function(event){
+    console.log(event.target.parentNode);
+
+    if(event.target.tagName==='IMG'){
+        const removeIt= event.target.parentNode;
+        removeIt.remove();
+    }
+}, false)
+
+
+//* but there is a small problem in this code, lets break it:
+//* when we click on the image, the code works fine cause when we click on the image 
+//* event.target.parntNode returns the 'li', and it's obvious the parent of the image tag is <li> 
+//* but when we click on any of the li itself, entire <ul> element gets removed. because when we click on the 
+//* <li>, its parent node is <ul> and we're reomving parent so the entire <ul> gets removed
+//* so, to solve it we put a condition check so that when we click on li, the <ul> doesn't get removed.
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Asynchronous JavaScript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    
+    
+    
+    <script>
+function randNum(anyNumber){
+    return Math.floor(Math.random()*(anyNumber+1))
+}
+// let randomColors=`rgb(${randNum(255)},${randNum(255)},${randNum(255)})`
+let startMe;
+let changeColor=function(){
+            let randomColors=`rgb(${randNum(100)},${randNum(209)},${randNum(111)})`
+            document.body.style.backgroundColor=randomColors;
+            console.log('rgb value: ',randomColors);
+        }
+    document.querySelector('#start').addEventListener('click',(event) => {
+        if(!startMe){
+            startMe=setInterval(changeColor,1000)
+        }
+    }, false)
+    document.querySelector('#stop').addEventListener('click',(event) => {
+        console.log('Stopped');
+        clearInterval(startMe);
+        startMe=null;
+    }, false)
+
+
+    </script>
+</body>
+</html>

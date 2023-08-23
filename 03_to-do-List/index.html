@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>ToDo List</title>
+</head>
+<body>
+    <header>A TooDoo List App</header>
+    <form>
+        <input type="text" class="task-input">
+        <button class="addTask" type="submit">
+            <i class='bx bxs-plus-circle'></i>
+        </button>
+        <div class="select">
+            <select name="filter" id="todo-filter" class="todo-filter">
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="uncompleted">Uncompleted</option>
+            </select>
+        </div>
+    </form>
+    <div class="todo-container">
+        <ul class="todo-list">
+        </ul>
+    </div>
+   
+    <div class="notification" id="notification"></div>
+    <script src="script.js"></script>
+</body>
+</html>
