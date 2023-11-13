@@ -15,7 +15,7 @@ const outerObj = {
   };
   
   outerObj.outerFunction();
-// * In an arrow function, this is not dynamically bound; it is lexically scoped.
+// * In an arrow function, 'this' is not dynamically bound; it is lexically scoped.
 // * The arrow function captures the 'this' value from its surrounding scope,
 // * which is the global scope in this case. 
 // * Hence, this.name inside the arrow function becomes undefined.
