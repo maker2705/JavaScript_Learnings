@@ -8,13 +8,13 @@ const numbers = [1, 2, 3, 4];
 
 let numb = numbers.reduce( 
                             function(accumulator,currentValue) {
-    console.log(`acc:${accumulator} and currenctValue:${currentValue}`);
+    console.log(`acc:${accumulator} and currValue:${currentValue}`);
     //above line is to just to track the values of aacumulator and currentValue. 
                                 return (accumulator+currentValue)
                                                                }, 3
                          );
 
-// the 3 we types is the initial value for the accumulator.
+// the 3 we typed is the initial value for the accumulator.
 console.log(numb);
 
 const shoppingCart=[
